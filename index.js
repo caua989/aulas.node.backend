@@ -11,8 +11,14 @@ app.get("/api/v1/somar", (req, res) => {
     const resultado = num1 + num2;
 
     res.send({ resultado });
-});
+})
+
+app.get("/api/pessoa/:id", (req, res) => {
+    const id = req.params.id
+
+     res.send({ message: id })
+})
 
 app.listen(3000, () => {
     console.log("Servidor ouvindo na porta 3000");
-});
+})
