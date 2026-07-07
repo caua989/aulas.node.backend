@@ -27,6 +27,20 @@ app.get("/api/pessoa", (req, res) => {
      res.send({ message: "Pessoa criada com sucesso" })
 })
 
+app.get("/api/pessoa/deletar", (req, res) => {
+    const id = req.params.id
+
+    if(!id) {
+        res.send({ message: "Pessoa não encontrada"})
+        return
+    }
+
+    bancoDeDados.delete({ id, name })
+    //console.log(bancoDeDados)
+
+    res.send({ message: "Pessoa deletada com sucesso" })
+})
+
 app.listen(3000, () => {
     console.log("Servidor escutando na porta 3000");
 }) // http://localhost:3000/api/pessoa/abcde
