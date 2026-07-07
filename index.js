@@ -27,8 +27,8 @@ app.get("/api/pessoa", (req, res) => {
      res.send({ message: "Pessoa criada com sucesso" })
 })
 
-app.get("/api/pessoa/deletar", (req, res) => {
-    const id = req.params.id
+app.get("/api/deletar/:id", (req, res) => {
+    const id = req.query.id
 
     if(!id) {
         res.send({ message: "Pessoa não encontrada"})
@@ -36,7 +36,6 @@ app.get("/api/pessoa/deletar", (req, res) => {
     }
 
     bancoDeDados.delete({ id, name })
-    //console.log(bancoDeDados)
 
     res.send({ message: "Pessoa deletada com sucesso" })
 })
