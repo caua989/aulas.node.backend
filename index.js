@@ -1,12 +1,30 @@
 import express from "express";
 import exer1 from "./router/exer1.js";
+import exer2 from "./router/exer2.js";
+import exer3 from "./router/exer3.js";
+import exer4 from "./router/exer4.js";
+import exer5 from "./router/exer5.js";
+import exer6 from "./router/exer6.js";
+import exer7 from "./router/exer7.js";
+import exer8 from "./router/exer8.js";
+import exer9 from "./router/exer9.js";
+import exer10 from "./router/exer10.js";
 
 const app = express();
 
 app.use(express.json())
 
 app.use("/api", exer1)
-
+app.use("/api", exer2)
+app.use("/api", exer3)
+app.use("/api", exer4)
+app.use("/api", exer5)
+app.use("/api", exer6)
+app.use("/api", exer7)
+app.use("/api", exer8)
+app.use("/api", exer9)
+app.use("/api", exer10)
+app.use("/api", exer1)
 
 app.listen(3000, () => {
     console.log("Servidor escutando na porta 3000");
