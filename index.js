@@ -1,7 +1,11 @@
 import express from "express";
-import bancoDeDados from "./repository/index.js";
+import exer1 from "./repository/exer1.js";
 
 const app = express();
+
+app.use(express.json())
+
+app.use("/api", exer1)
 
     app.listen(3000, () => {
     console.log("Servidor escutando na porta 3000");
