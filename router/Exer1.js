@@ -1,8 +1,9 @@
 import express from "express";
+import exer1 from "../repository/Exer1";
 
-const app = express();
+const router = express.Router()
 
-app.get("/api/exer1", (req, res) => {
+router.get("/api/exer1", (req, res) => {
     const { produto, custo } = req.query;
 
     res.status(200).send({
@@ -10,6 +11,4 @@ app.get("/api/exer1", (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000");
-});
+export default router
