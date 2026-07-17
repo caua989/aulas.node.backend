@@ -1,11 +1,11 @@
 import express from "express";
-import router from "./router/exer1.js";
+import exer1 from "./router/exer1.js";
 
 const app = express();
 
 app.use(express.json())
 
-app.use("/api", router)
+app.use("/api", exer1)
 
 
 app.listen(3000, () => {

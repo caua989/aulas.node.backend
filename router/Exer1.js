@@ -1,5 +1,5 @@
 import express from "express";
-import exer1 from "../repository/exer1";
+import exer1 from "../repository/exer1.js";
 
 const router = express.Router()
 
