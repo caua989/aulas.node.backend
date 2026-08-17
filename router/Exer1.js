@@ -17,6 +17,6 @@ router.post("/exer1/criar", (req, res) => {
 })
 
 router.get("/exer1/lista", (req, res) => {
-    
+    res.send({ message: save1 })
 })
 export default router
