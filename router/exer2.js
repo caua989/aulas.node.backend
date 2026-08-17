@@ -11,13 +11,14 @@ router.post("/exer2", (req, res) => {
         return
     }
 
-    save1.push({ produto, custo})
+     const resultado = Number(comprimento) * Number(largura)
+
+    save2.push({ resultado})
     res.send({ message: "cadastrado com sucesso" })
-    return
 })
 
 router.get("/exer2", (req, res) => {
-    res.send({ message: save1 })
+    res.send({ message: resultado })
 })
 
 export default router
