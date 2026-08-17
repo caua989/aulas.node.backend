@@ -18,7 +18,7 @@ router.post("/exer2", (req, res) => {
 })
 
 router.get("/exer2", (req, res) => {
-    res.send({ message: resultado })
+    res.send({ message: save2 })
 })
 
 export default router
