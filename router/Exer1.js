@@ -3,7 +3,7 @@ import save1 from "../repository/exer1.js"
 
 const router = express.Router()
 
-router.post("/exer1/criar", (req, res) => {
+router.post("/exer1", (req, res) => {
     const { produto, custo } = req.body
 
     if(!produto || !custo) {
@@ -16,7 +16,7 @@ router.post("/exer1/criar", (req, res) => {
     return
 })
 
-router.get("/exer1/lista", (req, res) => {
+router.get("/exer1", (req, res) => {
     res.send({ message: save1 })
 })
 
