@@ -6,13 +6,17 @@ const router = express.Router()
 router.post("/exer1/criar", (req, res) => {
     const { produto, custo } = req.body
 
-    if(!produto || custo) {
+    if(!produto || !custo) {
         res.send({ message: "Informe todos os dados"})
         return
     }
 
     save1.push({ produto, custo})
     res.send({ message: "cadastrado com sucesso" })
+    return
 })
 
+router.get("/exer1/lista", (req, res) => {
+    
+})
 export default router
