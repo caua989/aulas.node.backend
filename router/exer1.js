@@ -4,14 +4,16 @@ import save1 from "../repository/exer1.js"
 const router = express.Router()
 
 router.post("/exer1", (req, res) => {
-    const { produto, custo } = req.body
+    const { num1, num2 } = req.body
 
-    if(!produto || !custo) {
+    if(!num1 || !num2) {
         res.send({ message: "Informe todos os dados"})
         return
     }
 
-    save1.push({ produto, custo})
+    const resultado = Number(num1) * Number(num2)
+
+    save1.push({ resultado })
     res.send({ message: "cadastrado com sucesso" })
     return
 })
