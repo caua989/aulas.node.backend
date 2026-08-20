@@ -39,7 +39,7 @@ class ControllerCarro{
 
     Alterar(req, res) {
         try{
-            
+
             } catch (error) {
         res.status(500).send({ message: error.message})
     }
@@ -57,3 +57,5 @@ class ControllerCarro{
         }
 }
 }
+
+export default new ControllerCarro()
