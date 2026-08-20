@@ -11,7 +11,7 @@ router.post("/exer1", (req, res) => {
         return
     }
 
-    const resultado = Number(num1) * Number(num2)
+    const resultado = Number(num1) + Number(num2)
 
     save1.push({ resultado })
     res.send({ message: "cadastrado com sucesso" })

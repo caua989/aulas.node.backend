@@ -1,24 +1,24 @@
 import express from "express"
-import save3 from "../repository/exer3.js"
+import save2 from "../repository/exer2.js"
 
 const router = express.Router()
 
-router.post("/exer3", (req, res) => {
-    const [ total, parcelas] = req.body
+router.post("/exer2", (req, res) => {
+    const { ganhos, horas } = req.body
 
-    if(!total || !parcelas) {
-        res.send({ message: "informe todos os dados"})
+    if(!ganhos || !horas) {
+        res.send({ message: "Informe todos os dados"})
         return
     }
 
-    const resultado = Number(total) / Number(parcelas)
+     const resultado = Number(ganhos) * Number(horas)
 
-    save3.push({ resultado })
-    res.send({ message: "Cadastrado com sucesso"})
+    save2.push({ resultado})
+    res.send({ message: "cadastrado com sucesso" })
 })
 
-router.get("/exer3", (req, res) => {
-    res.send({ message: save3})
+router.get("/exer2", (req, res) => {
+    res.send({ message: save2 })
 })
 
 export default router
