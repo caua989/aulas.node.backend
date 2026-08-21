@@ -29,7 +29,7 @@ class ControllerCarro{
         const { id, marca, ano } = req.body
 
         ServiceCarro.Criar(id, marca, ano)
-        
+
         res.send({ message:"Cadastrado com sucesso"})
     } catch (error) {
         res.status(500).send({ message: error.message})
@@ -46,7 +46,7 @@ class ControllerCarro{
 
     Deletar(req, res) {
     try{
-        const id = req.body.id
+        const id = req.params.id
 
         ServiceCarro.Deletar(id)
 

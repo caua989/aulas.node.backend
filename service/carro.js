@@ -38,7 +38,7 @@ class ServiceCarro {
              throw new Error("Favor informar o ID")
         }
 
-        RepositoryCarro.splice(carros, it => it.id === id, 1)
+        RepositoryCarro.splice(carros, it => it.id == id, 1)
 
         return id
     }
