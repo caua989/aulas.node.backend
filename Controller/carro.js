@@ -1,8 +1,11 @@
+import ServiceCarro from '../service/carro.js'
+
 class ControllerCarro{
 
     //recebimento e a saida das informações
-    Buscar(req, res) {
+    Buscar(_, res) {
         try {
+            const carros = ServiceCarro.Buscar()
             res.send({ message: carros })
         } catch (error) {
             res.status(500).send({ message: error.message})
@@ -12,7 +15,7 @@ class ControllerCarro{
     Detalhe(req, res) {
     try {
         const id = req.params.id
-        const carro = carros.find(it => it.id == id)
+        const carro = ServiceCarro.Detalhe(id)
 
         res.send({ message: carro})
     } catch (error) {
@@ -25,12 +28,8 @@ class ControllerCarro{
         //id, marca, ano
         const { id, marca, ano } = req.body
 
-        if (!id || !marca || !ano ) {
-            res.send({ message: "Informe todos os dados"})
-            return
-        }
-
-        carros.push({ id, marca, ano })
+        ServiceCarro.Criar(id, marca, ano)
+        
         res.send({ message:"Cadastrado com sucesso"})
     } catch (error) {
         res.status(500).send({ message: error.message})
@@ -39,7 +38,7 @@ class ControllerCarro{
 
     Alterar(req, res) {
         try{
-
+            ServiceCarro.Alterar
             } catch (error) {
         res.status(500).send({ message: error.message})
     }
@@ -49,7 +48,7 @@ class ControllerCarro{
     try{
         const id = req.body.id
 
-        carros.splice(carros, it => it.id === id, 1)
+        ServiceCarro.Deletar(id)
 
         res.send({ message: "Deletado" })
         } catch (error) {
