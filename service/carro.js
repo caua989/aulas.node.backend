@@ -2,46 +2,55 @@ import RepositoryCarro from '../repository/carro.js'
 
 class ServiceCarro {
 
-    //core - 
-    Buscar() {
-        return RepositoryCarro
+    // Core- Regra de Negocio
+    async Buscar() {
+        return RepositoryCarro.find()
     }
 
-    Detalhe(id) {
+    async Detalhe(id) {
         if(!id) {
             throw new Error("Favor informar o ID")
         }
-        const carro = RepositoryCarro.find(it => it.id == id)
 
+        const carro = await RepositoryCarro.findById(id)
+        
         if(!carro) {
-            throw new Error(`ID ${id} do carro não foi encontrado`)
+            throw new Error(`ID ${id} do carro não encontrado`)
         }
 
         return carro
     }
-
-    // função(parametros)
-    Criar(id, marca, ano) {
-
-        if (!id || !marca || !ano ) {
+    // Função(parametros, parametros, parametros)
+    async Criar(marca, ano) {
+         if (!marca || !ano) {
              throw new Error("Favor informar todos os dados")
-        }
-        RepositoryCarro.push({ id, marca, ano })
+         }
+         const carro = await RepositoryCarro.Create( marca, ano )
 
-        return { id, marca, ano }
+         return carro
     }
 
-    Alterar() {}
+    async Alterar(id, marca, ano) {
+        if (!id || !marca || !ano) {
+            throw new Error("Favor informar os dados");
+        }
 
-    Deletar(id) {
+        const carroAlterado = await RepositoryCarro.Update(id, marca, ano)
+
+        return carroAlterado
+    }
+
+    async Deletar(id) {
+
         if (!id) {
-             throw new Error("Favor informar o ID")
+            throw new Error("Favor informar o ID")
         }
+        
+        const carro = await RepositoryCarro.Delete(id)
 
-        RepositoryCarro.splice(carros, it => it.id == id, 1)
-
-        return id
+        return carro
     }
+
 }
 
 export default new ServiceCarro()

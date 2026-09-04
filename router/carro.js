@@ -1,21 +1,12 @@
-import express from 'express'
+import express from "express"
 import ControllerCarro from "../Controller/carro.js"
 
 const router = express.Router()
 
-//Buscar tudo
 router.get("/buscar", ControllerCarro.Buscar)
-
-//Buscar um
 router.get("/detalhe/:id", ControllerCarro.Detalhe)
-
-//Criar um
 router.post("/criar", ControllerCarro.Criar)
-
-//Mudar um
-router.put("/alterar/id:", ControllerCarro.Alterar)
-
-//deletar um
-router.delete("/deletar/id:", ControllerCarro.Deletar)
+router.put("/alterar/:id", ControllerCarro.Alterar)
+router.delete("/deletar/:id", ControllerCarro.Deletar)
 
 export default router
