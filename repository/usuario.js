@@ -47,6 +47,10 @@ class RepositoryUsuario {
 
         return usuarioDeletar
     }
+
+    async FindByEmail(email) {
+        return usuario.findOne({ where: { email } })
+    }
 }
 
 export default new RepositoryUsuario()

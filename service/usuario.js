@@ -1,4 +1,8 @@
 import RepositoryUsuario from '../repository/usuario.js'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+
+const segredo = 'M3uS3rg3d0'
 
 class ServiceUsuario {
 
@@ -51,6 +55,29 @@ class ServiceUsuario {
         return usuario
     }
 
+    async Login(email, senha) {
+        if(!email || !senha) {
+            throw new Error("Email ou senha inválido")
+        }
+
+        const usuario = await RepositoryUsuario.FindByEmail(email)
+
+        if(!usuario) {
+            throw new Error("Email ou senha inválido")
+        }
+
+        if(
+            !(await bcrypt.compare(String(senha), usuario.senha))
+        ) {
+            throw new Error("Email ou senha inválido")
+        }
+
+        return jwt.sign(
+            { id: usuario.id, email },
+            segredo,
+            { expiresIn: 60 * 60 }
+        )
+    }
 }
 
 export default new ServiceUsuario()
