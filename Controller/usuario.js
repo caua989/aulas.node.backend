@@ -2,8 +2,9 @@ import ServiceUsuario from '../service/usuario.js'
 
 class ControllerUsuario {
     // Recebimento e a Saida das info
-    async Buscar(_, res) {  
+    async Buscar(req, res) {  
         try {
+            console.log(req.session)
             const usuarios = await ServiceUsuario.Buscar()
             res.status(200).send({ mensagem: usuarios })
         } catch (error) {
