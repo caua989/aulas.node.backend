@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import './style.css'
-import { getLogin } from '../../api/api';
+import { LoginUser } from '../../api/user';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault() //para o envio automatico do formulario
+         const response = await LoginUser(email, senha)
+         localStorage.setItem('token', response.token)
+    }
 
     return (
         <div className="login-container">
@@ -34,14 +40,11 @@ export default function Login() {
                 <button
                     className="button"
                     type="submit"
-                    onClick={(e) => {
-                        e.preventDefault()
-                        getLogin
-                    }}
+                    onClick={handleSubmit}
                 >Entrar</button>
                 <button
                     className="button back-button"
-                    onClick={() => { }}
+                    onClick={() => {}}
                 >
                     Voltar
                 </button>
